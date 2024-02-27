@@ -3,6 +3,7 @@
 ## Overview
 This is a simple Tic-Tac-Toe game implemented in Java with a graphical user interface (GUI). The game allows for two modes: Player vs Player and Player vs AI.
 
+![Screenshot 1](screenshot-1709063863076.png)
 
 ## Features
 - **Player vs Player mode:** Two players can play against each other on the same computer.
@@ -13,6 +14,8 @@ This is a simple Tic-Tac-Toe game implemented in Java with a graphical user inte
 - **Dark mode theme:** The game has a dark mode theme for a sleek look.
 - **Customizable icon:** The game icon can be customized.
 
+![Screenshot 2](screenshot-1709063895746.png)
+
 ## AI Logic
 The AI opponent in the Player vs AI mode uses a strategic algorithm to determine its moves:
 - **Winning move:** If the AI has a winning move available, it will play that move to win the game.
@@ -20,6 +23,9 @@ The AI opponent in the Player vs AI mode uses a strategic algorithm to determine
 - **Forking move:** The AI will try to create a forking opportunity, where it has two possible ways to win on the next turn.
 - **Opposite corner:** If the player occupies a corner and the center, the AI will occupy the opposite corner to block possible winning moves.
 - **Empty side:** If none of the above conditions are met, the AI will occupy an empty side square.
+
+  ![Screenshot 3](screenshot-1709063928949.png)
+
 
 ## Installation
 ### Requirements
