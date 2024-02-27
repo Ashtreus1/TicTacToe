@@ -49,6 +49,12 @@ The AI opponent in the Player vs AI mode uses a strategic algorithm to determine
   - Set the classpath to the main class (TicTacToeGUI).
 - Click on the Build Wrapper button to create the executable.
 
+  ## Download
+You can download here the executable version of the game for Windows from the following link:
+
+[Download TicTacToeGUI.zip](https://1drv.ms/f/s!AkCS1XQDzk6boyWUasMBHVqvbiq7?e=nqUPCe)
+
+
 ## How to Play
 - **Player vs Player mode:** Click on a button to place your symbol (X or O).
 - **Player vs AI mode:** Play against the AI, which makes intelligent moves to win or block your moves.
