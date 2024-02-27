@@ -52,7 +52,7 @@ The AI opponent in the Player vs AI mode uses a strategic algorithm to determine
   ## Download
 You can download here the executable version of the game for Windows from the following link:
 
-[Download TicTacToeGUI.zip]((https://1drv.ms/u/s!AkCS1XQDzk6boyQ72OcDJn35DcJw?e=Eg1Jxg))
+[Download TicTacToeGUI.zip](https://1drv.ms/u/s!AkCS1XQDzk6boyQ72OcDJn35DcJw?e=Eg1Jxg)
 
 
 ## How to Play
