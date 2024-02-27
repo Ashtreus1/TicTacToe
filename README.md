@@ -50,7 +50,7 @@ The AI opponent in the Player vs AI mode uses a strategic algorithm to determine
 - Click on the Build Wrapper button to create the executable.
 
   ## Download
-You can download here the executable version of the game for Windows from the following link:
+You can download the here the jar file version of the game for Windows from the following link:
 
 [Download TicTacToeGUI.zip](https://1drv.ms/u/s!AkCS1XQDzk6boyQ72OcDJn35DcJw?e=Eg1Jxg)
 
