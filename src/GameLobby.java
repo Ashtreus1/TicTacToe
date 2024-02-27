@@ -7,11 +7,20 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 
+/**
+ * The GameLobby class represents the lobby screen for the Tic-Tac-Toe game.
+ * It allows the player to choose between Player vs Player and Player vs AI modes.
+ */
 public class GameLobby extends JFrame {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Constructs a new GameLobby frame.
+     * Sets up the GUI components and event listeners.
+     */
     public GameLobby() {
+        // Set frame properties
         setTitle("TicTacToe");
         setSize(500, 500);
         setResizable(false);
@@ -21,12 +30,14 @@ public class GameLobby extends JFrame {
         getContentPane().setBackground(new Color(33, 33, 33));
         
         try {
+            // Set frame icon
             Image iconImage = ImageIO.read(getClass().getResourceAsStream("tictactoe.png")); 
             setIconImage(iconImage);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+        // Header label
         JLabel headerLabel = new JLabel("TIC-TAC-TOE");
         headerLabel.setHorizontalAlignment(SwingConstants.CENTER);
         headerLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
@@ -34,10 +45,12 @@ public class GameLobby extends JFrame {
         headerLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0)); 
         add(headerLabel, BorderLayout.NORTH);
 
+        // Options panel for buttons
         JPanel optionsPanel = new JPanel(new GridLayout(2, 1));
         optionsPanel.setBackground(new Color(33, 33, 33));
         optionsPanel.setBorder(BorderFactory.createEmptyBorder(20, 50, 20, 50)); 
 
+        // Player vs Player button
         JButton playerVsPlayerButton = new JButton("Player vs Player");
         playerVsPlayerButton.setFont(new Font("Tahoma", Font.BOLD, 20));
         playerVsPlayerButton.setForeground(Color.CYAN);
@@ -65,6 +78,7 @@ public class GameLobby extends JFrame {
         });
         optionsPanel.add(playerVsPlayerButton);
 
+        // Player vs AI button
         JButton playerVsAIButton = new JButton("Player vs AI");
         playerVsAIButton.setFont(new Font("Tahoma", Font.BOLD, 20));
         playerVsAIButton.setForeground(Color.CYAN);
@@ -95,6 +109,11 @@ public class GameLobby extends JFrame {
         add(optionsPanel, BorderLayout.CENTER);
     }
 
+    /**
+     * The main method to start the GameLobby.
+     * Creates a new instance of GameLobby and sets it visible.
+     * @param args Command line arguments (not used).
+     */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override

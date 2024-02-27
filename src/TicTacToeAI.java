@@ -22,6 +22,16 @@ public class TicTacToeAI extends JFrame {
     private JLabel statusLabel;
     JLabel playerScoreLabel = new JLabel("Player: " + playerScore);
     JLabel aiScoreLabel = new JLabel("AI: " + aiScore);
+    
+    
+    /**
+     * Constructs a new Tic-Tac-Toe game window with the specified settings and components.
+     * The game window includes a header label, a 3x3 grid of buttons for the game board,
+     * a status label indicating the current player's turn, and score labels for player
+     * and AI scores. The window also includes buttons for resetting the game and returning
+     * to the game lobby. The game board uses X for the player and O for the AI. The player
+     * can click on empty cells to make a move, and the AI makes moves automatically.
+     */
 
     public TicTacToeAI() {
         setTitle("Tic Tac Toe");
@@ -211,7 +221,13 @@ public class TicTacToeAI extends JFrame {
         currentPlayer = X;
         clearBoard();
     }
-
+    
+    /**
+     * Clears the game board by resetting all cells to empty and removing any
+     * displayed X's or O's from the buttons on the board. It then updates the
+     * visual representation of the board.
+     */
+    
     private void clearBoard() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -221,7 +237,14 @@ public class TicTacToeAI extends JFrame {
         }
         updateBoard();
     }
-
+    
+    /**
+     * Updates the visual representation of the game board by setting the text of
+     * each button based on the current state of the board. X's and O's are displayed
+     * on the buttons according to their positions on the board, and empty cells are
+     * represented by an empty string.
+     */
+    
     private void updateBoard() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -239,7 +262,15 @@ public class TicTacToeAI extends JFrame {
             }
         }
     }
-
+    
+    /**
+     * Checks the current state of the board to determine if there is a winner.
+     * Returns the player (X or O) who has won the game, or 0 for a draw, or
+     * EMPTY if the game is still ongoing.
+     *
+     * @return The player who has won the game, or 0 for a draw, or EMPTY if the game is ongoing.
+     */
+    
     private int checkWinner() {
         // Check rows
         for (int i = 0; i < 3; i++) {
@@ -264,7 +295,13 @@ public class TicTacToeAI extends JFrame {
 
         return EMPTY;
     }
-
+    
+    /**
+     * Checks if the game board is full, i.e., if all cells are occupied by X or O.
+     *
+     * @return True if the board is full, false otherwise.
+     */
+    
     private boolean isBoardFull() {
         for (int[] row : board) {
             for (int cell : row) {
@@ -275,7 +312,13 @@ public class TicTacToeAI extends JFrame {
         }
         return true;
     }
-
+    
+    /**
+     * Ends the current game and updates the UI based on the winner or a draw.
+     *
+     * @param winner The winner of the game (X, O, or EMPTY for a draw).
+     */
+    
     private void endGame(int winner) {
     	 if (winner == X) {
     	        playerScore++;
@@ -311,7 +354,9 @@ public class TicTacToeAI extends JFrame {
         timer.start();
     }
 
-
+    /**
+     * Resets the colors of all buttons to default (GRAY) and enables all buttons.
+    */
 
     private void resetComponents() {
         // Reset button colors and enable buttons
@@ -322,7 +367,14 @@ public class TicTacToeAI extends JFrame {
             }
         }
     }
-
+    
+    /**
+     * Highlights the winning line on the board with the specified color for the given winner (X or O).
+     *
+     * @param color  The color to use for highlighting the winning line.
+     * @param winner The winner of the game (X or O).
+     */
+    
     private void highlightWinningLine(Color color, int winner) {
         if (winner == X || winner == O) {
             if (winner == X) {
@@ -377,6 +429,12 @@ public class TicTacToeAI extends JFrame {
         }
     }
     
+    /**
+     * Checks if any winning line is currently highlighted on the board.
+     *
+     * @return {@code true} if a winning line is highlighted, {@code false} otherwise.
+     */
+    
     private boolean isWinningLineHighlighted() {
         // Check if any button has the highlight color
         for (int i = 0; i < 3; i++) {
@@ -388,7 +446,11 @@ public class TicTacToeAI extends JFrame {
         }
         return false;
     }
-
+    
+    /**
+     * Executes the AI's move in the game.
+     */
+    
     private void aiMove() {
         int[] move;
 
@@ -440,7 +502,10 @@ public class TicTacToeAI extends JFrame {
         }
     }
 
-
+    /**
+     * Checks if there is a winning move available for the AI and returns the move coordinates if found.
+     * @return An array containing the row and column indices of the winning move, or null if no winning move is found.
+     */
 
     private int[] checkWinningMove() {
         // Check for a winning move for AI
@@ -457,7 +522,12 @@ public class TicTacToeAI extends JFrame {
         }
         return null;
     }
-
+    
+    /**
+     * Checks if there is a move available to block the player's winning move and returns the move coordinates if found.
+     * @return An array containing the row and column indices of the blocking move, or null if no blocking move is found.
+     */
+    
     private int[] checkBlockingMove() {
         // Check for blocking the player's winning moves
         for (int i = 0; i < 3; i++) {
@@ -474,7 +544,11 @@ public class TicTacToeAI extends JFrame {
         }
         return null;
     }
-
+    
+    /**
+     * Checks for a move that creates a forking opportunity, a situation where the AI can win regardless of the opponent's next move.
+     * @return An array containing the row and column indices of the forking move, or null if no forking move is found.
+     */
     private int[] checkForkingMove() {
         // Check for creating a forking opportunity
         if (board[1][1] == EMPTY) {
@@ -525,7 +599,11 @@ public class TicTacToeAI extends JFrame {
         // If none of the above conditions are met, return null to indicate no forking move
         return null;
     }
-
+    
+    /**
+     * Checks for an opportunity to occupy the opposite corner of a corner occupied by the opponent.
+     * @return An array containing the row and column indices of the opposite corner move, or null if no such move is found.
+     */
 
     private int[] checkOppositeCorner() {
         // Check for occupying the opposite corner
@@ -543,6 +621,11 @@ public class TicTacToeAI extends JFrame {
         }
         return null;
     }
+    
+    /**
+     * Checks for an opportunity to occupy an empty side square.
+     * @return An array containing the row and column indices of the empty side square move, or null if no such move is found.
+     */
 
     private int[] checkEmptySide() {
         // Check for occupying an empty side square
@@ -560,6 +643,11 @@ public class TicTacToeAI extends JFrame {
         }
         return null;
     }
+    
+    /**
+     * Returns a random move from the list of empty cells, prioritizing winning, blocking, forking, and corner moves.
+     * @return An array containing the row and column indices of the random move.
+     */
 
     private int[] getRandomMove() {
         // Get a random move
@@ -591,7 +679,11 @@ public class TicTacToeAI extends JFrame {
         return null;
     }
 
-
+    /**
+     * The entry point of the application. Creates and displays the TicTacToeAI frame.
+     * @param args The command-line arguments.
+     */	
+    
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new TicTacToeAI().setVisible(true));
     }

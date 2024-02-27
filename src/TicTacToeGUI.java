@@ -1,7 +1,6 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +8,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 
+/**
+ * This class represents a Tic-Tac-Toe game with a graphical user interface.
+ */
 public class TicTacToeGUI extends JFrame {
 
     private static final long serialVersionUID = 1L;
@@ -24,8 +26,9 @@ public class TicTacToeGUI extends JFrame {
     private JLabel playerXScoreLabel;
     private JLabel playerOScoreLabel;
 
-    
-    
+    /**
+     * Constructs a new instance of the TicTacToeGUI class.
+     */
     public TicTacToeGUI() {
         setTitle("Tic Tac Toe");
         setSize(700, 700);
@@ -33,10 +36,10 @@ public class TicTacToeGUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         setLocationRelativeTo(null);
-        getContentPane().setBackground(new Color(33, 33, 33)); 
-        
+        getContentPane().setBackground(new Color(33, 33, 33));
+
         try {
-            Image iconImage = ImageIO.read(getClass().getResourceAsStream("tictactoe.png")); 
+            Image iconImage = ImageIO.read(getClass().getResourceAsStream("tictactoe.png"));
             setIconImage(iconImage);
         } catch (IOException e) {
             e.printStackTrace();
@@ -44,18 +47,17 @@ public class TicTacToeGUI extends JFrame {
 
         Cursor handCursor = new Cursor(Cursor.HAND_CURSOR);
 
-     
         Border paddingBorder = BorderFactory.createEmptyBorder(40, 10, 20, 10);
 
         JLabel headerLabel = new JLabel("TIC-TAC-TOE");
         headerLabel.setHorizontalAlignment(SwingConstants.CENTER);
         headerLabel.setFont(new Font("Tahoma", Font.BOLD, 35));
         headerLabel.setForeground(Color.CYAN);
-        headerLabel.setBorder(paddingBorder); 
+        headerLabel.setBorder(paddingBorder);
         add(headerLabel, BorderLayout.NORTH);
 
         JPanel boardPanel = new JPanel(new GridLayout(3, 3));
-        boardPanel.setBackground(new Color(33, 33, 33)); 
+        boardPanel.setBackground(new Color(33, 33, 33));
         boardPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         for (int i = 0; i < 3; i++) {
@@ -67,7 +69,7 @@ public class TicTacToeGUI extends JFrame {
                 button.setForeground(Color.CYAN);
                 button.setCursor(handCursor);
                 button.setBackground(Color.GRAY); // Set the default background color of the button to gray
-                button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2)); 
+                button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
                 button.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -114,12 +116,12 @@ public class TicTacToeGUI extends JFrame {
 
         statusLabel = new JLabel("Player X's turn");
         statusLabel.setForeground(Color.CYAN);
-        statusLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0)); 
+        statusLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0));
         statusLabel.setFont(statusLabel.getFont().deriveFont(Font.BOLD, 25));
         statusLabel.setHorizontalAlignment(SwingConstants.CENTER);
         statusPanel.add(statusLabel, BorderLayout.CENTER);
-        
-        JPanel scorePanel = new JPanel(new FlowLayout(FlowLayout.CENTER)); 
+
+        JPanel scorePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         scorePanel.setBackground(new Color(33, 33, 33));
         scorePanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
@@ -136,14 +138,12 @@ public class TicTacToeGUI extends JFrame {
 
         statusPanel.add(scorePanel, BorderLayout.NORTH);
 
-
-
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         bottomPanel.setBackground(new Color(33, 33, 33));
         add(bottomPanel, BorderLayout.SOUTH);
         add(statusPanel, BorderLayout.SOUTH);
         statusPanel.add(bottomPanel, BorderLayout.SOUTH);
-        
+
         JButton backButton = new JButton("Back");
         backButton.setPreferredSize(new Dimension(100, 50));
         backButton.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -154,15 +154,15 @@ public class TicTacToeGUI extends JFrame {
         backButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-            	backButton.setBackground(Color.DARK_GRAY); 
+                backButton.setBackground(Color.DARK_GRAY);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-            	backButton.setBackground(Color.GRAY); 
+                backButton.setBackground(Color.GRAY);
             }
         });
-        
+
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -181,24 +181,24 @@ public class TicTacToeGUI extends JFrame {
         backButtonPanel.add(backButton);
 
         bottomPanel.add(backButtonPanel);
-        
+
         JButton resetButton = new JButton("Reset");
-        resetButton.setPreferredSize(new Dimension(200, 50)); 
-        resetButton.setFont(new Font("Tahoma", Font.BOLD, 20)); 
-        resetButton.setForeground(Color.CYAN); 
-        resetButton.setBackground(Color.GRAY); 
-        resetButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2)); 
-        resetButton.setCursor(handCursor); 
+        resetButton.setPreferredSize(new Dimension(200, 50));
+        resetButton.setFont(new Font("Tahoma", Font.BOLD, 20));
+        resetButton.setForeground(Color.CYAN);
+        resetButton.setBackground(Color.GRAY);
+        resetButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        resetButton.setCursor(handCursor);
 
         resetButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                resetButton.setBackground(Color.DARK_GRAY); 
+                resetButton.setBackground(Color.DARK_GRAY);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                resetButton.setBackground(Color.GRAY); 
+                resetButton.setBackground(Color.GRAY);
             }
         });
 
@@ -215,11 +215,13 @@ public class TicTacToeGUI extends JFrame {
         });
         bottomPanel.add(resetButton);
 
-
         player = X;
         clearBoard();
     }
 
+    /**
+     * Clears the game board.
+     */
     private void clearBoard() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -230,6 +232,9 @@ public class TicTacToeGUI extends JFrame {
         updateBoard();
     }
 
+    /**
+     * Updates the game board based on the current state.
+     */
     private void updateBoard() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -249,6 +254,11 @@ public class TicTacToeGUI extends JFrame {
         statusLabel.setText("Player " + (player == X ? "O" : "X") + "'s turn");
     }
 
+    /**
+     * Checks if there is a winner in the current game state.
+     *
+     * @return The player (X or O) who has won, or 0 if there is no winner yet.
+     */
     private int checkWinner() {
         for (int i = 0; i < 3; i++) {
             if (board[i][0] + board[i][1] + board[i][2] == 3 * X ||
@@ -271,6 +281,11 @@ public class TicTacToeGUI extends JFrame {
         return EMPTY;
     }
 
+    /**
+     * Checks if the game board is full.
+     *
+     * @return True if the board is full, false otherwise.
+     */
     private boolean isBoardFull() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -282,8 +297,13 @@ public class TicTacToeGUI extends JFrame {
         return true;
     }
 
+    /**
+     * Handles the end of the game.
+     *
+     * @param winner The player (X or O) who has won, or 0 if it's a tie.
+     */
     private void endGame(int winner) {
-    	if (winner == X) {
+        if (winner == X) {
             playerXScore++;
             playerXScoreLabel.setText("Player X: " + playerXScore);
             highlightWinningLine(Color.GREEN);
@@ -293,13 +313,11 @@ public class TicTacToeGUI extends JFrame {
             highlightWinningLine(Color.GREEN);
         }
 
-        
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 buttons[i][j].setEnabled(false);
             }
         }
-
 
         // Automatically reset the game after 2 seconds
         Timer timer = new Timer(2000, new ActionListener() {
@@ -313,8 +331,9 @@ public class TicTacToeGUI extends JFrame {
         timer.start();
     }
 
-
-
+    /**
+     * Resets the components of the game board.
+     */
     private void resetComponents() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -324,7 +343,11 @@ public class TicTacToeGUI extends JFrame {
         }
     }
 
-
+    /**
+     * Highlights the winning line on the game board.
+     *
+     * @param color The color to use for highlighting.
+     */
     private void highlightWinningLine(Color color) {
         int winner = checkWinner();
         if (winner == X || winner == O) {
@@ -379,7 +402,12 @@ public class TicTacToeGUI extends JFrame {
             }
         }
     }
-    
+
+    /**
+     * Checks if the winning line is currently highlighted.
+     *
+     * @return True if the winning line is highlighted, false otherwise.
+     */
     private boolean isWinningLineHighlighted() {
         // Check if any button has the highlight color
         for (int i = 0; i < 3; i++) {
@@ -392,7 +420,11 @@ public class TicTacToeGUI extends JFrame {
         return false;
     }
 
-
+    /**
+     * Main method to start the Tic-Tac-Toe game.
+     *
+     * @param args Command line arguments (not used).
+     */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
